@@ -44,7 +44,7 @@ function playBreakout() {
  * Creates the paddle
  */
 function gamePad() {
-    paddle = GRect((GWINDOW_WIDTH - PADDLE_WIDTH) * .5, (GWINDOW_HEIGHT - PADDLE_HEIGHT) * .9, PADDLE_WIDTH, PADDLE_HEIGHT);
+    paddle = GRect(paddleX, paddleY, PADDLE_WIDTH, PADDLE_HEIGHT);
     paddle.setColor("Black");
     paddle.setFilled(true);
     gameWindow.add(paddle);
@@ -56,14 +56,13 @@ function gamePad() {
 function buildBricks() {
     let brickLayout = ["Red", "Red", "Orange", "Orange", "Yellow", "Yellow", "Green", "Green", "Blue", "Blue"];
     let brickRow = GWINDOW_HEIGHT * .1;
-    let bricks = []
+    let bricks = [];
     for (let i = 0; i < 10; i++) {
         for (let j = 0; j < 10; j++) {
             bricks[j] = GRect(2 + (((GWINDOW_WIDTH / 10) - 4) * j) + (j * 4), (brickRow + (i * 14)), ((GWINDOW_WIDTH / 10) - 4), 10);
             bricks[j].setColor(brickLayout[i]);
             bricks[j].setFilled(true);
             gameWindow.add(bricks[j]);
-            console.log("bricks loop" + j);
         }
     }
 }
